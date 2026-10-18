@@ -1,0 +1,56 @@
+Repository name:
+makan-stock
+
+Description (English):
+Open-source Persian/English inventory and warehouse management with Windows installer, portable app, SQLite, barcode tracking, purchasing and order fulfillment. Built by MAKAN LAB.
+
+Description (Persian alternative):
+مدیریت انبار و موجودی فارسی و انگلیسی؛ نسخه نصبی و پرتابل ویندوز، بارکد، خرید، فروش و گردش کالا. ساخته‌شده توسط ماکان، با مجوز MIT.
+
+Website:
+https://makanlab.tech/
+
+Visibility:
+Public
+
+Default branch:
+main
+
+License:
+MIT (use the LICENSE already supplied)
+
+Topics (add individually):
+inventory-management
+warehouse-management
+stock-management
+wms
+inventory
+windows
+portable
+sqlite
+nodejs
+javascript
+pwa
+persian
+rtl
+barcode
+open-source
+mit-license
+makan-lab
+
+Release tag:
+v1.3.0
+
+Release title:
+MAKAN STOCK 1.3.0 — Windows Setup, Portable & Persian Guide
+
+Suggested first commit:
+Initial public release of MAKAN STOCK 1.3.0
+
+Suggested documentation commit:
+Add bilingual project documentation and release information
+
+Proposed repository address (works only after you create it):
+https://github.com/makan20042002/makan-stock
+
+If you choose another account or repository name, replace the GitHub links in README.md before uploading.

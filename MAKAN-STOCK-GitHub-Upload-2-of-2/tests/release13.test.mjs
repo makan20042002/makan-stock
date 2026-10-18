@@ -1,0 +1,7 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {seed,apply,authorize} from '../src/core.mjs';
+const act=(s,a)=>apply(s,a,'tester');
+test('stale product edit returns conflict and preserves newer data',()=>{let s=seed(),p=s.products[0];s=act(s,{...p,type:'product_update',name:'New name',expectedRecordVersion:0});assert.equal(s.products[0]._revision,1);assert.throws(()=>act(s,{...p,type:'product_update',name:'Old name',expectedRecordVersion:0}),e=>e.status===409);assert.equal(s.products[0].name,'New name')});
+test('granular receive role cannot issue or dispatch stock',()=>{let s=act(seed(),{type:'custom_role',name:'Receiving only',permissions:['stock_receive']}),u={role:s.customRoles[0].id,warehouses:['w1']};assert.doesNotThrow(()=>authorize(u,{type:'receive',warehouse:'w1'},s));assert.throws(()=>authorize(u,{type:'issue',warehouse:'w1'},s));assert.throws(()=>authorize(u,{type:'dispatch'},s))});
+test('package contents must total each sales order line',()=>{let s=act(seed(),{type:'order',kind:'sales',warehouse:'w1',contact:'c2',lines:[{product:'p1',qty:10}]}),id=s.orders[0].id;s=act(s,{type:'pick',id});assert.throws(()=>act(s,{type:'pack',id,packages:[{name:'A',weight:1,items:[{index:0,qty:9}]}]}),/totals/);s=act(s,{type:'pack',id,packages:[{name:'A',weight:1,items:[{index:0,qty:4}]},{name:'B',weight:2,items:[{index:0,qty:6}]}]});assert.equal(s.orders[0].packages[1].items[0].qty,6)});

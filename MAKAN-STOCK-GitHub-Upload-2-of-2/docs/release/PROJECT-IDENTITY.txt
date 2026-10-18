@@ -1,0 +1,6 @@
+Project: MAKAN STOCK / ماکان استاک
+Created by: Makan / ماکان / MAKAN LAB
+Website: https://makanlab.tech/
+Public contact: makan20042002@gmail.com
+Original source license: MIT
+Suggested repository: makan20042002/makan-stock (not yet published by this package)

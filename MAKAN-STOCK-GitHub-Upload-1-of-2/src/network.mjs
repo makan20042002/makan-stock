@@ -1,0 +1,7 @@
+import fs from 'node:fs';import path from 'node:path';import {spawn} from 'node:child_process';import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),config=path.join(root,'network.json');
+if(!fs.existsSync(config)){console.log('ابتدا network.example.json را با نام network.json ذخیره و مسیر گواهی معتبر TLS، نام سرور و پورت را تنظیم کنید. راهنمای docs/DEPLOYMENT.fa.md را بخوانید.');process.exit(1)}
+let c=JSON.parse(fs.readFileSync(config,'utf8'));if(!Number.isInteger(c.port)||c.port<1024||c.port>65535||!Array.isArray(c.publicHosts)||!c.publicHosts.length||c.publicHosts.some(h=>!/^([a-zA-Z0-9.-]+):\d+$/.test(h)||Number(h.split(':').at(-1))!==c.port))throw Error('Invalid network hosts or port');
+let cert=path.resolve(root,c.certificate||''),key=path.resolve(root,c.privateKey||'');if(!fs.existsSync(cert)||!fs.statSync(cert).isFile()||!fs.existsSync(key)||!fs.statSync(key).isFile())throw Error('Provide a trusted TLS certificate and private key');
+if(fs.existsSync(path.join(root,'data','running.json')))throw Error('Stop the portable server with Stop-AnbarOne.cmd before starting network mode');
+const child=spawn(process.execPath,[path.join(root,'src','server.mjs')],{cwd:root,stdio:'inherit',windowsHide:true,env:{...process.env,PORT:String(c.port),ANBAR_DATA:path.join(root,'data'),ANBAR_BIND:c.bind||'0.0.0.0',ANBAR_TLS_CERT:cert,ANBAR_TLS_KEY:key,ANBAR_PUBLIC_HOSTS:c.publicHosts.join(',')}});child.on('exit',code=>process.exit(code||0));
