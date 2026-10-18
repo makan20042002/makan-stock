@@ -1,0 +1,15 @@
+data/
+node_modules/
+runtime/node.exe
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+network.json
+installed.json
+*.key
+*.pem
+.env
+.DS_Store
+
+release-assets/
+*.bundle

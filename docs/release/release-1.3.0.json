@@ -1,0 +1,47 @@
+{
+  "product": "MAKAN STOCK",
+  "version": "1.3.0",
+  "date": "2026-10-18",
+  "publisher": "Makan / MAKAN LAB",
+  "website": "https://makanlab.tech/",
+  "contact": "makan20042002@gmail.com",
+  "license": "MIT",
+  "platform": "Windows 10/11 x64",
+  "tests": {
+    "passed": 65,
+    "failed": 0,
+    "extractedSourcePassed": 65,
+    "portable": true,
+    "installerUpgradeUninstall": true
+  },
+  "unsigned": true,
+  "manualPages": 35,
+  "featureStatus": {
+    "implemented": 53,
+    "partial": 14,
+    "planned": 4,
+    "excluded": 1
+  },
+  "artifacts": [
+    {
+      "file": "MAKAN-STOCK-Setup-1.3.0-Windows-x64.exe",
+      "bytes": 26125595,
+      "sha256": "07cf74f34904ed96bc7af6da31b1f297f621e8cd12725acef4b9edebd117b0d3"
+    },
+    {
+      "file": "MAKAN-STOCK-1.3.0-Windows-x64-Portable.zip",
+      "bytes": 35701717,
+      "sha256": "9c995d1a634f71d63359eab7ca86c81d86978a26b17567e137a583c6bf5cecf7"
+    },
+    {
+      "file": "MAKAN-STOCK-1.3.0-Source.zip",
+      "bytes": 2499661,
+      "sha256": "aa48dd8c63b6acf42f4a430b5c5bdcb5ab684d3c6554a3f96c3dc97a3ffd70d6"
+    },
+    {
+      "file": "MAKAN-STOCK-Guide-fa.pdf",
+      "bytes": 162983,
+      "sha256": "0d89224372142390e537303c654d9940712481a1660863297bfbf4bd0b46947d"
+    }
+  ]
+}
